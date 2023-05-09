@@ -45,11 +45,23 @@ def run2():
     cmd = 'powershell "gps | where {$_.MainWindowTitle } | select Description,Id,Path'
     proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     for line in proc.stdout:
-        if not line.decode()[0].isspace():
-            print(line.decode().rstrip())
-
+        try:
+            if not line.decode()[0].isspace():
+                out = line.decode().rstrip()
+                start_index = out.find("C:")
+                path = out[start_index:].strip()
+                print(out)
+                print(path)
+        except:
+            out = line.decode().rstrip()
+            start_index = out.find("C:")
+            path = out[start_index:].strip()
+            print(out)
+            print(path)
 # https://stackoverflow.com/questions/54827918/get-list-of-running-windows-applications-using-python
 # https://www.geeksforgeeks.org/python-get-list-of-running-processes/
+
+# C:\Users\Lab28\AppData\Roaming\.tlauncher\jvms\jre1.8.0_281\bin\javaw.exe
 
 if __name__ == '__main__':
     run2()
