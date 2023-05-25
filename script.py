@@ -11,6 +11,8 @@ def add_to_startup():
     winreg.SetValueEx(key, 'AppDefender', 0, winreg.REG_SZ, path)
     winreg.CloseKey(key)
 
+# cmd: pyinstaller script.py --onefile --noconsole --icon defence.ico --name AppDefender
+
 add_to_startup()
 
 BASE_BANNED_APPS = """RiotClientUx.exe
