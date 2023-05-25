@@ -21,20 +21,6 @@ BlueStacks X.exe
 BlueStacksWeb.exe
 """
 
-
-try:
-    with open("banned_files", "r") as f:
-        banned = f.readlines()
-    for i, b in enumerate(banned):
-        banned[i] = b.strip()
-except FileNotFoundError:
-    banned = ["RiotClientUx.exe","RiotClient.exe","RiotClientUxRender.exe","RiotClientCrashHandler.exe","BlueStacks X.exe","BlueStacksWeb.exe"]
-    with open("banned_files", "w") as f:
-        data = ""
-        for d in banned:
-            data += "\n" + str(d)
-        f.write(data)
-
 def run():
     while True:
         for proc in psutil.process_iter():
@@ -50,7 +36,7 @@ def run():
                 childrens = proc.children(recursive=True)
                 parents = proc.parents()
                 print(childrens, parents, sep="\n\n")
-            for bannedproc in banned:
+            for bannedproc in BASE_BANNED_APPS:
                 if name in bannedproc:
                     print(f"Killing {name}")
                     try:
