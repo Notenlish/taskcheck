@@ -23,6 +23,7 @@ RiotClientUxRender.exe
 RiotClientCrashHandler.exe
 BlueStacks X.exe
 BlueStacksWeb.exe
+RobloxPlayerLauncher.exe
 """
 
 def run():
